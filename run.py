@@ -81,7 +81,7 @@ shapedData = []
 for element in allPagesData:
     temp = element.splitlines()
     shapedData.append({
-        "text": temp[0].replace("“", "").replace("", ""),
+        "text": temp[0].replace("“", "").replace(u'\u201d', ""),
         "by": " ".join(temp[1].split(" ")[1: -1]),
         "tags": temp[2].split(" ")[1:] if len(temp) == 3 else [] ,
     })
