@@ -10,6 +10,7 @@ import os
 from dotenv import load_dotenv
 
 # 0. INIT CONFIGURATION FROM FILE
+chromedriver_autoinstaller.install()
 
 load_dotenv()
 
@@ -17,20 +18,16 @@ PROXY = os.getenv('PROXY')
 INPUT_URL = os.getenv('INPUT_URL')
 OUTPUT_FILE = os.getenv('OUTPUT_FILE')
 
-# to do: sprawdzic czy na innym kompie da sie to zrobic asapem z .env po prostu
-
-
 opt = webdriver.ChromeOptions()
 opt.add_argument("--start-maximized")
+
+# proxy not working
 # opt.add_argument('--proxy-server=%s' % PROXY)
-
-chromedriver_autoinstaller.install()
-
 
 browser = webdriver.Chrome(options=opt)
 
-# PLACEHOLDER FOR ALL DATA
-allPagesData = []
+
+
 
 print('Scrapping inited...')
 
@@ -38,6 +35,8 @@ print('Scrapping inited...')
 # 1. SCRAP ALL PAGES
 
 # browser.maximize_window()
+# PLACEHOLDER FOR ALL DATA
+allPagesData = []
 
 browser.get(INPUT_URL + '/page/1/')
 # browser.get('http://quotes.toscrape.com/page/1/')
@@ -82,7 +81,7 @@ shapedData = []
 for element in allPagesData:
     temp = element.splitlines()
     shapedData.append({
-        "text": temp[0].replace("“", ""),
+        "text": temp[0].replace("“", "").replace("", ""),
         "by": " ".join(temp[1].split(" ")[1: -1]),
         "tags": temp[2].split(" ")[1:] if len(temp) == 3 else [] ,
     })

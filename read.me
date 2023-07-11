@@ -11,4 +11,22 @@ PROXY=xxxx
 INPUT_URL=xxxxxx
 OUTPUT_FILE=xxxxxx
 
-2. You need to create env using
+2. You need to create env using 'virtualenv env' 
+3. Run command - source env/bin/activate   
+4. Install packages - pip install -r requirements.txt
+
+
+What could be improved?
+- there is small bug with string replacement -> would need to remove \u201d 
+
+- code refactor
+    extract code to modules and have a few lines running the whole script 
+
+- browser imitation 
+    add scroll to browser
+    add mouse movement in different directions
+
+- adding more error control for running script 
+    inform that .env file is missing 
+    proxy not working 
+    switching to regular scrapper)
